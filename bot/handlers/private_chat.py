@@ -140,6 +140,7 @@ class PrivateHandler(bot_utils.BaseHandler):
             raise bot_utils.StateErrorHandler('timer_not_started')
         else:
             timer.created_at -= timedelta(minutes=time_to_add)
+            timer.save()
         tguser.edit_message_reply_markup(keyboard=keyboards.Card(tguser, card_id, timer))
 
     @staticmethod
